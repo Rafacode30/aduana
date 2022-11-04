@@ -1,35 +1,25 @@
 window.addEventListener('load', (event) => {
-    
-    // devices();
-    records();
-    recallData();
+    packages();
+    call();
 });
 
-const recallData = () => {
+const call = () => {
 
-    // setInterval(devices, 15000);
-    setInterval(records, 15000);
+    setInterval(packages, 8000);
 }
 
-const records = () => {
-
-    fetch(`${base_url+'/packages'}`, {
-                    
+const packages = () => {
+    fetch(`${base_url+'/packages'}`, {           
         method: 'get'
     })
     .then(response => response.json())
     .then(async result => {
 
-        const table = document.querySelector('#wilkin').getElementsByTagName('tbody')[0];
-        // const totalRecords = document.querySelector('#totalRecord');
-
-        // totalRecords.innerHTML = result.length;
-
-        cleanTable();
-
+        const pr = document.querySelector('#wilkin').getElementsByTagName('tbody')[0];
+        ck();
         result.forEach(record => {
 
-            let row = table.insertRow();
+            let row = pr.insertRow();
             let cell0 = row.insertCell(0);
             let cell1 = row.insertCell(1);
             let cell2 = row.insertCell(2);
@@ -40,11 +30,11 @@ const records = () => {
             let cell7 = row.insertCell(7);
 
             cell0.innerHTML = record.id;
-            cell1.innerHTML = record.location;
-            cell2.innerHTML = record.pressure;
-            cell3.innerHTML = record.heart_rate;
-            cell4.innerHTML = record.oxygen;
-            cell5.innerHTML = record.device_id;
+            cell1.innerHTML = record.tamaño;
+            cell2.innerHTML = record.peso;
+            cell4.innerHTML = record.destino;
+            cell5.innerHTML = record.origen;
+            cell3.innerHTML = 'Sensor ' + record.sensor;
             cell6.innerHTML = record.created_at;
             cell7.innerHTML = record.updated_at;
         });
@@ -52,29 +42,8 @@ const records = () => {
     });
 }
 
-// const devices = () => {
+const ck = () => {
 
-//     for (let id = 1; id <= 6; id++) {
-
-//         const getData = fetch(`${base_url+'/devices/'+id}`, {
-                        
-//             method: 'get'
-//         })
-//         .then(response => response.json())
-//         .then(async result => {
-        
-            
-//             const deviceTotal = document.querySelector(`${'#totalRegistros'+id}`);
-
-//             if (deviceTotal) {
-//                 deviceTotal.innerHTML = result.length;
-//             }
-//         });
-//     }
-// }
-
-const cleanTable = () => {
-
-    const cleanTable = document.getElementById('wilkin').getElementsByTagName('tbody')[0];
-    cleanTable.innerHTML = '';
+    const delete2 = document.getElementById('wilkin').getElementsByTagName('tbody')[0];
+    delete2.innerHTML = '';
 }

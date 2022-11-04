@@ -18,9 +18,9 @@ return new class extends Migration
             $table->id();
             $table->string('tamaño', 50);
             $table->integer('peso');
-            $table->string('tipo_contenido', 50);
             $table->string('destino', 255);
             $table->string('origen', 255);
+            $table->string('sensor', 50);
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class Package extends Model
     protected $fillable = [
         'tamaño',
         'peso',
-        'tipo_contenido',
+        'sensor',
         'destino',
         'origen'
     ];

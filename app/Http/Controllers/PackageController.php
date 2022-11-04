@@ -14,8 +14,8 @@ class PackageController extends Controller
 
     public function packages()
     {
-        $datos = Package::all();
+        $respuesta = Package::orderBy('id', 'desc')->limit(110)->get();
 
-        return response()->json($datos);
+        return response()->json($respuesta);
     }
 }
